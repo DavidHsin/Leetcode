@@ -30,7 +30,7 @@ class Solution {
          * it can't enter the while loop when "left < right".
         */
         while(left <= right) {
-            //Magic operation, but we should add parenthesis.
+            //Magic operation, but we should add parentheses.
             int mid = left + ((right - left) >>> 1);
             if(target == nums[mid]) {
                 return mid;
