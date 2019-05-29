@@ -20,26 +20,13 @@ class Solution {
         }
         
         //base case
-        int[] M = new int[nums.length];
-        M[0] = nums[0];
+        int last_max = nums[0];
         int global_max = nums[0];
-        
-        /**
-         * index:   0  1   2  3   4  5  6   7  8
-         * nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-         * M[i] = [-2, 1, -2, 4,  3, 5, 6,  1, 5]
-         * 
-         * M[i] = max(nums[i], nums[i] + M[i - 1])
-         * for example, when index = 1, M[1] = max(nums[1], nums[1] + M[0]),
-         * which is M[1] = max(1, -1) = 1.
-         * 
-         * global_max = max(global_max, M[i])
-         * */
         
         //induction rules
         for(int i = 1; i < nums.length; i++) {
-            M[i] = Math.max(nums[i], nums[i] + M[i - 1]);
-            global_max = Math.max(global_max, M[i]);
+            last_max = Math.max(nums[i], nums[i] + last_max);
+            global_max = Math.max(global_max, last_max);
         }
         return global_max;
     }
