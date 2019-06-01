@@ -28,7 +28,8 @@ public class FirstTargetInASortedArray {
 		int left = 0;
 		int right = arr.length - 1;
 		while(left + 1 < right) {	//it ensures the program ends when there are two elements in this array
-			int mid = left + (right - left) / 2;
+			//unsigned right shift
+			int mid = (left + right) >>> 1;
 			if(arr[mid] == target) {
 				right = mid;		//it keeps at least one target in remaining array
 			}else if(arr[mid] < target) {
