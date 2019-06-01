@@ -27,7 +27,8 @@ public class ClosestElementToTarget {
 		int left = 0;
 		int right = arr.length - 1;
 		while(left + 1 < right) {	//it ensures the program ends when there are two elements in this array
-			int mid = left + (right - left) / 2;
+			//unsigned right shift
+			int mid = (left + right) >>> 1;
 			if(arr[mid] <= target) {
 				left = mid;
 			}else if(arr[mid] > target) {
@@ -43,8 +44,8 @@ public class ClosestElementToTarget {
 	}
 	
 	public static void main(String[] args) {
-		int[] arr = {0, 1};
-		int target = 3;
+		int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 10};
+		int target = 8;
 		System.out.println(findClosestElement(arr, target));
 	}
 }
