@@ -15,6 +15,17 @@ Output:
 ]
  */
 
+/**
+ *                 abc
+ *           /      |         \
+ *        a(bc)    b(ac)       c(ab)
+ *       /    \    /   \       /  \
+ *    ab(c) ac(b) ba(c) bc(a) ca(b) cb(a)
+ *      |    |      |    |     |     |
+ *    abc   acb    bac   bca   cab   cba
+ * 
+ */
+
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new LinkedList<>();
