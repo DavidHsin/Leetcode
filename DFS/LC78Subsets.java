@@ -21,26 +21,27 @@ Output:
 
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        
-        List<List<Integer>> result=new ArrayList<List<Integer>>();
-        List<Integer> subset=new ArrayList<Integer>();
-        if(nums==null || nums.length==0){
-            return result;
+        List<List<Integer>> solution = new ArrayList<>();
+        if(nums == null) {
+            return solution;
         }
-        findAllSubsets(nums, 0, result, subset);
-        return result;
-   }
+        //Arrays.sort(nums);
+        findSubsets(solution, new ArrayList<Integer>(), 0, nums);
+        return solution;
+    }
     
-    private void findAllSubsets(int[] nums, int index, List<List<Integer>> result, List<Integer> subset){
-         if(index==nums.length){
-             result.add(new ArrayList<>(subset));
-             return;
-         }
-         findAllSubsets(nums, index+1, result, subset);
-         subset.add(nums[index]);
-         findAllSubsets(nums, index+1, result, subset);
-         subset.remove(subset.size()-1);
-   }
-
-
+    public void findSubsets(List<List<Integer>> solution, List<Integer> subSolution, int index, int[] nums) {
+        if(nums.length == index) {
+            solution.add(new ArrayList<Integer>(subSolution));
+            //solution.add(subSolution);
+            return;
+        }
+        //case1: do not add
+        findSubsets(solution, subSolution, index + 1, nums);    
+        //case2: add nums[index] to the subSolution
+        subSolution.add(nums[index]);
+        findSubsets(solution, subSolution, index + 1, nums);
+        subSolution.remove(subSolution.size() - 1);
+        
+    }
 }
