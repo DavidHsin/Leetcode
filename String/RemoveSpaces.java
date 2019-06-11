@@ -1,7 +1,11 @@
 package leetcode;
 
 /**
+ * Remove all head and tail and duplicate spaces in a given string
+ * 
  * For example:
+ * 
+ * "_" represents one space
  * input = "____I___love_______google_so__much_____"
  * 
  * output = "I_love_google_so_much"
