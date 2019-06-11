@@ -1,5 +1,14 @@
 package leetcode;
 
+/**
+ * Remove a/some particular chars from a string in place
+ * 
+ * Example:
+ * String input = "student", remove "u" and "n"
+ * output = "stdet"
+ * 
+ * */
+
 public class RemoveParticularCharsFromAString {
 	
 	public static String charRemoval(String input) {
