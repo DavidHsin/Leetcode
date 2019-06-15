@@ -12,17 +12,21 @@ public class MergeSort {
 	}
 
 	private static void mergeHelper(int[] array, int left, int right) {
+		
+		//base case
 		if (left == right) {
 			return;
 		}
-		int mid = left + (right - left) / 2;
-		mergeHelper(array, left, mid); 
+		
+		//recursive rules
+		int mid = (left + right) >>> 1;		//1. split array in half
+		mergeHelper(array, left, mid); 		//2. sort halves
 		mergeHelper(array, mid + 1, right); 
-		combine(array, left, right);
+		combine(array, left, right);		//3. merge halves
 	}
 
 	private static void combine(int[] array, int left, int right) {
-		int mid = left + (right - left) / 2;
+		int mid = (left + right) >>> 1;
 		// initialize two subArrays
 		int[] leftArray = new int[mid - left + 1]; 
 		int[] rightArray = new int[right - mid];
