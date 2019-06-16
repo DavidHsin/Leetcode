@@ -38,6 +38,21 @@ public class ReplaceStringII {
 		for(int i = 0; i < s.length(); i++) {
 			array[i] = sChar[i];
 		}
+		
+		/**
+		 * we can use StringBuilder.append() to add extra spaces,
+		 * it is much better than char[]
+		 * 
+		 * public static void main(String[] args) {
+				String s = "abcd";
+				StringBuilder sb = new StringBuilder(s);
+				String extraS = "__";
+				sb.append(extraS, 0, 2);	//result: "abcd__"
+		
+				System.out.println(sb);
+			}
+		 */
+		
 		//System.out.println(array);
 		
 		//3. use two pointers: slow and fast starting from the tail
