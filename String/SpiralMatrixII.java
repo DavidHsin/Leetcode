@@ -19,8 +19,14 @@ public class SpiralMatrixII {
 	
 	public static void spiralAdd(int[][] matrix, int offset, int rowLength, int columnLength, List<Integer> res) {
 		
-		//base case
+		//base case1: M != N
 		if(rowLength == 0 || columnLength == 0) {
+			return;
+		}
+		
+		//base case2: M == N
+		if(rowLength == 1 && columnLength == 1) {
+			res.add(matrix[offset][offset]);
 			return;
 		}
 		
@@ -49,9 +55,9 @@ public class SpiralMatrixII {
 	}
 	
 	public static void main(String[] args) {
-		int[][] matrix = {{1,   2,  3, 4}, 
-				          {10, 11, 12, 5}, 
-				          {9,   8,  7, 6}};
+		int[][] matrix = {{1, 2, 3}, 
+				          {8, 9, 4}, 
+				          {7, 6, 5}};
 		System.out.println(spiralMatrix(matrix));
 	}
 }
