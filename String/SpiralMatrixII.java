@@ -19,14 +19,65 @@ public class SpiralMatrixII {
 	
 	public static void spiralAdd(int[][] matrix, int offset, int rowLength, int columnLength, List<Integer> res) {
 		
-		//base case1: M != N
+		//base case1
+		/**
+		 *     1 2 3 4
+		 *     5 6 7 8
+		 *     1 2 3 4
+		 *     5 6 7 8
+		 *  
+		 *  After one spiral, the remaining matrix looks like
+		 *  
+		 *       6 7
+		 *       2 3
+		 */
 		if(rowLength == 0 || columnLength == 0) {
 			return;
 		}
 		
-		//base case2: M == N
+		//base case2
+		/**
+		 *      1 2 3
+		 *      4 5 6
+		 *      7 8 9
+		 *      
+		 *  After one spiral, the remaining matrix looks like
+		 *  
+		 *        5
+		 *        
+		 *  only one element in this matrix
+		 */
 		if(rowLength == 1 && columnLength == 1) {
 			res.add(matrix[offset][offset]);
+			return;
+		}
+		
+		//base case3: one column remaining
+		/**
+		 *    1 2 3
+		 *    4 5 6
+		 *    7 8 9
+		 *    3 2 1
+		 *    4 5 6
+		 *    
+		 * After one spiral, the remaining matrix looks like
+		 * 
+		 *      5
+		 *      8
+		 *      2
+		 */
+		if(rowLength == 1 && columnLength >= 2) {
+			for(int i = 0; i < columnLength; i++) {
+				res.add(matrix[offset + i][offset]);
+			}
+			return;
+		}
+		
+		//base case4: one row remaining, the same as one column remaining
+		if(columnLength == 1 && rowLength >= 2) {
+			for(int i = 0; i < rowLength; i++) {
+				res.add(matrix[offset][offset + i]);
+			}
 			return;
 		}
 		
@@ -55,9 +106,7 @@ public class SpiralMatrixII {
 	}
 	
 	public static void main(String[] args) {
-		int[][] matrix = {{1, 2, 3}, 
-				          {8, 9, 4}, 
-				          {7, 6, 5}};
+		int[][] matrix = {{ 1,  2,  3}};
 		System.out.println(spiralMatrix(matrix));
 	}
 }
