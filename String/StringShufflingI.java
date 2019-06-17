@@ -50,6 +50,16 @@ public class StringShufflingI {
 		int i = 0;
 		int j = 0;
 		int k = left;
+		/**
+		 * Using ASCII code, "A" = 65 and "z" = 122, 0 = 48 and 9 = 57
+		 * 
+		 * so if leftArray[i] and rightArray[j] are both same, for example,
+		 * they are both numbers or alphabets, we can compare it directly.
+		 * 
+		 * However, if leftArray[i] is a number and rightArray[j] is an alphabet or 
+		 * leftArray[i] is an alphabet and rightArray[i] is a number, we can set
+		 * the alphabet is always in front of the number.
+		 */
 		while (i < leftArray.length && j < rightArray.length) {
 			if (compareTwoChar(leftArray, rightArray, i, j) == true && leftArray[i] <= rightArray[j]) {
 				array[k] = leftArray[i];
@@ -80,6 +90,7 @@ public class StringShufflingI {
 		}
 	}
 	
+	//change the sequence
 	public static boolean compareTwoChar(char[] leftArray, char[] rightArray, int i, int j) {
 		if (leftArray[i] >= 65 && rightArray[j] >= 65 || leftArray[i] <= 57 && rightArray[j] <= 57) {
 			return true;
