@@ -39,7 +39,7 @@ Return false.
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution1 {
     public boolean isBalanced(TreeNode root) {
         //base case
         if(root == null) {
@@ -65,5 +65,30 @@ class Solution {
         int left = getHeight(root.left);
         int right = getHeight(root.right);
         return 1 + Math.max(left, right);
+    }
+}
+
+class Solution2 {
+    public boolean isBalanced(TreeNode root) {
+        if(balancedHelper(root) == -1) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+    
+    public int balancedHelper(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        
+        int leftHeight = balancedHelper(root.left);
+        int rightHeight = balancedHelper(root.right);
+        
+        if(leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+        
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
