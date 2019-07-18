@@ -47,3 +47,11 @@ class Solution {
         return false;
     }
 }
+
+/**
+ * According to the analysis of binary search, we can consider 2D matrix as an array
+ * consists of m * n elements.
+ * 
+ * Time complexity: O(log(m * n)) = O(logm) + O(logn)
+ * Space complexity: O(log(m * n)) = O(logm) + O(logn)
+ */
