@@ -15,7 +15,44 @@ Output: -1
 Explanation: 2 does not exist in nums so return -1
  */
 
-class Solution {
+class Solution1 {	//Recursive method
+    public int search(int[] nums, int target) {
+        
+        if(nums == null || nums.length == 0) {
+            return -1;
+        }
+        
+        int left = 0;
+        int right = nums.length - 1;
+        return searchHelper(nums, left, right, target);
+    }
+    
+    public int searchHelper(int[] nums, int left, int right, int target) {
+        int mid = (left + right) >>> 1;
+        
+        //base case
+        if(left > right) {
+            return -1;
+        }
+        
+        //recursive rules
+        if(nums[mid] > target) {
+            return searchHelper(nums, left, mid - 1, target);
+        }else if(nums[mid] < target) {
+            return searchHelper(nums, mid + 1, right, target);
+        }else {
+            return mid;
+        }
+    }
+}
+
+/**
+ * Time complexity: O(logn)
+ * Space complexity: O(logn)
+ * 
+ */
+
+class Solution2 {	//Iterative method
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0) {
             //Mind the return value type "int"
