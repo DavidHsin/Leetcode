@@ -16,36 +16,45 @@ package leetcode;
 public class ClosestElementToTarget {
 	
 	public static int findClosestElement(int[] arr, int target) {
+		//corner case 1
 		if(arr == null || arr.length == 0) {
 			return -1;
 		}
 		
+		//corner case 2
 		if(arr.length == 1) {
 			return arr[0];
 		}
 		
 		int left = 0;
 		int right = arr.length - 1;
-		while(left + 1 < right) {	//it ensures the program ends when there are two elements in this array
-			//unsigned right shift
+		//when there are equal to or more than 2 elements in the array
+		while(left + 1 < right) {
 			int mid = (left + right) >>> 1;
 			if(arr[mid] <= target) {
 				left = mid;
-			}else if(arr[mid] > target) {
+			}else {
 				right = mid;
 			}
 		}
 		
-		if(Math.abs(arr[left] - target) <= Math.abs(arr[right] - target)) {
-			return arr[left];
+		//compare two remaining elements in the last step
+		if(Math.abs(arr[left] - target) > Math.abs(arr[right] - target)) {
+			return right;
 		}else {
-			return arr[right];
+			return left;
 		}
 	}
 	
 	public static void main(String[] args) {
-		int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 10};
+		int[] arr = {0, 1, 9};
 		int target = 8;
 		System.out.println(findClosestElement(arr, target));
 	}
 }
+
+/**
+ * Time complexity: O(logn)
+ * Space complexity: O(logn)
+ * 
+ */
