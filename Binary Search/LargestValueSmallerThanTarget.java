@@ -52,6 +52,6 @@ public class LargestValueSmallerThanTarget {
 
 /**
  * Time complexity: O(logn)
- * Space complexity: O(logn)
+ * Space complexity: O(1)
  * 
  */
