@@ -44,3 +44,22 @@ class Solution {
         return -1;
     }
 }
+
+/**
+ *          n
+ *          |
+ *          n / 2
+ *          |
+ *          n / 4
+ *          |
+ *          n / 8
+ *          |
+ *         ...
+ *          |
+ *          1
+ * 
+ * there are log(n) layers.
+ * Time complexity: O(logn)
+ * Space complexity: O(logn)
+ */
+ */
