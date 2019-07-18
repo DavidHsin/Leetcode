@@ -60,5 +60,5 @@ public class FirstTargetInASortedArray {
 
 /**
  * Time complexity: O(logn)
- * Space complexity: O(logn)
+ * Space complexity: O(1)
  */
