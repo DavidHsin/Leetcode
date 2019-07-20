@@ -63,6 +63,25 @@ class MyQueue {
 }
 
 /**
+ * Time complexity: 
+ * push() -> O(1)
+ * pop() -> O(n)
+ * 
+ * Space complexity: O(n)
+ * 
+ * And for the Amortized time complexity
+ * 1st time call pop(): n(pop from s1) + n(push into s2) + 1(pop from s2) = 2 * n + 1
+ * 2nd time call pop(): 1(pop from s2) = 1
+ * 3rd time call pop(): 1(pop from s2) = 1
+ * .
+ * .
+ * .
+ * nth time call pop(): 1(pop from s2) = 1
+ * 
+ * Amortized time complexity: (2 * n + 1 + (n - 1) * 1) / n = 2 = O(1)
+ */
+
+/**
  * Your MyQueue object will be instantiated and called as such:
  * MyQueue obj = new MyQueue();
  * obj.push(x);
