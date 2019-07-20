@@ -29,17 +29,17 @@ class MinStack {
     }
     
     public void push(int x) {
-        //push elements into elementStack and in the mean time,
-        //push global min into minStack
-        elementStack.push(new Integer(x));
-        if(minStack.isEmpty()) {    //if its empty, then we push the first element as the global min
+        elementStack.push(x);   						//it works both "x" and "new Integer(x)"
+        //elementStack.push(new Integer(x));
+        
+        if(minStack.isEmpty()) {                        //case1: if its empty, then we push the first element as the global min
             minStack.push(x);
-        }else {                     //if it's not empty, then we compare the element with global min(minStack.peek())
-            if(new Integer(x) > minStack.peek()) {
-                minStack.push(minStack.peek());
-            }else {
-                minStack.push(x);
-            }
+            //minStack.push(new Integer(x));
+        }else if(new Integer(x) > minStack.peek()) {    //case2: if it's not empty, then we compare the element with global min
+            minStack.push(minStack.peek());
+        }else {                                         //case3
+            minStack.push(x);
+            //minStack.push(new Integer(x));
         }
     }
     
