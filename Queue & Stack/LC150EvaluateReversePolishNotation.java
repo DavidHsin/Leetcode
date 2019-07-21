@@ -31,36 +31,35 @@ Explanation:
 = 22
  */
 
-import java.util.Stack;
-
 class Solution {
     public int evalRPN(String[] tokens) {
         
         int a = 0;
         int b = 0;
+        Stack<Integer> rPN = new Stack<>();
         
-        Stack<Integer> stack = new Stack<>();
-        
-        for(String token: tokens) {
+        for(String token : tokens) {
+            
+            //if using "(token == "+")", it cannot work
             if(token.equals("+")) {
-                stack.add(stack.pop() + stack.pop());
+                rPN.push(rPN.pop() + rPN.pop());
             }else if(token.equals("-")) {
-                //when the input is ["1", "2", "/"], we should caculate 1/2 rather than 2/1
-                b = stack.pop();
-                a = stack.pop();
-                stack.add(a - b);
+                //"2-1" and "1-2" are different
+                b = rPN.pop();
+                a = rPN.pop();
+                rPN.push(a - b);
             }else if(token.equals("*")) {
-                stack.add(stack.pop() * stack.pop());
+                rPN.push(rPN.pop() * rPN.pop());
             }else if(token.equals("/")) {
-                //the same as the substract function
-                b = stack.pop();
-                a = stack.pop();
-                stack.add(a / b);
+                //"1/2" and "2/1" are different
+                b = rPN.pop();
+                a = rPN.pop();
+                rPN.push(a / b);
             }else {
-                stack.add(Integer.parseInt(token));
+                //String to Integer in Java: parseInt
+                rPN.push(Integer.parseInt(token));
             }
         }
-        return stack.pop();
+        return rPN.pop();
     }
-    
 }
