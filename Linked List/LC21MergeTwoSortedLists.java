@@ -34,12 +34,12 @@ class Solution {
             cur = cur.next;
         }
         
-        //case1: if l1 is larger than l2
+        //case1: if the size of l1 is larger than l2 Or l2 is null
         if(l1 != null) {
             cur.next = l1;
         }
         
-        //case2: if l2 is larger than l1
+        //case2: if the size of l2 is larger than l1 Or l1 is null
         if(l2 != null) {
             cur.next = l2;
         }
