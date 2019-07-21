@@ -15,6 +15,14 @@ Output: 5->4->3->2->1->NULL
  *     ListNode(int x) { val = x; }
  * }
  */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
 class Solution {
     public ListNode reverseList(ListNode head) {
         
@@ -24,9 +32,11 @@ class Solution {
         }
         
         //recursive rules
-        ListNode node = reverseList(head.next);
-        head.next.next = head;  //Start reversing
+        ListNode nextListNode = reverseList(head.next);
+        
+        head.next.next = head;  //these two steps cannot reverse
         head.next = null;
-        return node;
+        
+        return nextListNode;
     }
 }
