@@ -40,3 +40,8 @@ class Solution {
         return 1 + Math.max(left, right);
     }
 }
+
+/**
+ * Time complexity: O(n), iterate all n elements
+ * Space complexity: O(n), the worst case: this tree is like linked list
+ */
