@@ -88,10 +88,11 @@ class Solution {
             curNode.next = head;
         }
         
-        if(newHead != null) {
-            curNode.next = newHead;
-        }
-        
+        //the size of head linked list is always larger or equal to newHead linked list
+//        if(newHead != null) {
+//            curNode.next = newHead;
+//        }
+//        
         return dummyHead.next;
     }
 }
