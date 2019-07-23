@@ -31,23 +31,30 @@ Output: 4
 
 class Solution {
     public int findKthLargest(int[] nums, int k) {
+        //step1: create a priority queue named minHeap, the value of root is the least
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         
-        //create a new minHeap
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(k);
-        
-        //add the first k elements into the minHeap, the value of root is the least one
+        //step2: add K numbers into minHeap
         for(int i = 0; i < k; i++) {
             minHeap.add(nums[i]);
         }
         
-        //compare the root value with all remaining elements
+        //step3: compare minhead.peek() with number starting from (K + 1) in nums to the last one
         for(int i = k; i < nums.length; i++) {
             if(nums[i] > minHeap.peek()) {
-                minHeap.poll();         //remove the root value
-                minHeap.add(nums[i]);   //and then add a number larger than root value
+                minHeap.poll();
+                minHeap.offer(nums[i]);
+            }else {
+                continue;
             }
         }
         
         return minHeap.peek();
     }
 }
+
+/**
+ * Time complexity: O(K) + O((n-K)logK)
+ * 
+ */
+ */
